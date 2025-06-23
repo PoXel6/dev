@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/../util
+if [ ! -n "pacman -Qq | grep yay" ]; then
+	input="USER INPUT"
+	read -p "yay is not installed, should i install yay? [Y/n]: " input
+	if [[ $input == [nN] ]]; then
+		log "Ok, exiting..."
+		exit 0
+	fi
+	log "Installing yay..."
+	cd $script_dir/../
+	log pwd
+	./dev yay
+else
+	log "yay is installed, proceeding..."
+	execute yay -S --noconfirm \
+		neovim fd ripgrep tmux stow btop eza zoxide jq \
+		nodejs pnpm go rustup
+fi
