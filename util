@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+log() {
+	if [[ $dry == "1" ]]; then
+		echo "[DRY_RUN]: $@"
+	else
+		echo "[DEV]: $@"
+	fi
+}
+
+execute() {
+	log "execute $@"
+	if [[ $dry == "1" ]]; then
+		return
+	fi
+	"$@"
+}
