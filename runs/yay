@@ -8,3 +8,4 @@ execute git clone https://aur.archlinux.org/yay.git $HOME/yay/
 execute cd $HOME/yay/
 execute makepkg -si
 execute rm -rf $HOME/yay
+execute yay -Syu --noconfirm
