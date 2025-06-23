@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-source ./util
-
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/util
 
 filter=""
 dry="0"
@@ -17,7 +16,7 @@ while [[ $# > 0 ]]; do
 done
 
 cd $script_dir
-scripts=$(find ./runs -mindepth 1 -maxdepth 1 -executable -type f)
+scripts=$(find runs -mindepth 1 -maxdepth 1 -executable -type f)
 
 for script in $scripts; do
 	if echo "$script" | grep -qv "$filter"; then
