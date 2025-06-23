@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/../util
+
+log() {
+	echo "[DEV] $1"
+}
+execute sudo pacman -S --noconfirm --needed git base-devel
+execute git clone https://aur.archlinux.org/yay.git $HOME/yay/
+execute cd $HOME/yay/
+execute makepkg -si
+execute rm -rf $HOME/yay
