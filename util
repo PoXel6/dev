@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 log() {
-	if [[ $dry == "1" ]]; then
+	if [[ $DRY_RUN == "1" ]]; then
 		echo "[DRY_RUN]: $@"
 	else
 		echo "[DEV]: $@"
@@ -10,10 +10,16 @@ log() {
 
 execute() {
 	log "execute $@"
-	if [[ $dry == "1" ]]; then
-		return
-	fi
 	"$@"
+}
+
+execute_d() {
+	log "EXEC /W DRY_RUN: $@"
+	if [[ $DRY_RUN == "1" ]]; then
+		return
+	else
+		"$@"
+	fi
 }
 
 prompt_user() {

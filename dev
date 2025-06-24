@@ -4,11 +4,11 @@ script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/util
 
 filter=""
-dry="0"
+export DRY_RUN="0"
 
 while [[ $# > 0 ]]; do
 	if [[ $1 == "--dry-run" ]] || [[ $1 == "-n" ]]; then
-		dry="1"
+		export DRY_RUN="1"
 	else
 		filter="$1"
 	fi

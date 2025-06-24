@@ -3,34 +3,35 @@
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/../util
 
-execute cd $script_dir
+execute_d cd $script_dir
 if [ ! -d $HOME/dotConfig/ ]; then
-	execute ./repo dotConfig
+	execute_d ./repo dotConfig
+elif [ $(basename $(which stow)) != "stow" ]; then
+	execute_d ./base
 fi
 log "dotConfig Already exist proceeding"
 
-execute cd $HOME/dotConfig/
+execute_d cd $HOME/dotConfig/
 stowing() {
-	execute stow -$1 zsh
-	execute stow -$1 git
-	execute stow -$1 hypr
-	execute stow -$1 kitty
-	execute stow -$1 waybar
-	execute stow -$1 btop
-	execute stow -$1 gtk-2.0
-	execute stow -$1 gtk-3.0
-	execute stow -$1 rofi
-	execute stow -$1 scripts
-	execute stow -$1 starship
-	execute stow -$1 swappy
-	execute stow -$1 swaync
-	execute stow -$1 tmux
-	execute stow -$1 waypaper
-	execute stow -$1 keyd
-	execute stow -$1 fastfetch
-	execute stow -$1 bash
-	execute stow -$1 nvim
-
+	execute_d stow -$1 zsh
+	execute_d stow -$1 git
+	execute_d stow -$1 hypr
+	execute_d stow -$1 kitty
+	execute_d stow -$1 waybar
+	execute_d stow -$1 btop
+	execute_d stow -$1 gtk-2.0
+	execute_d stow -$1 gtk-3.0
+	execute_d stow -$1 rofi
+	execute_d stow -$1 scripts
+	execute_d stow -$1 starship
+	execute_d stow -$1 swappy
+	execute_d stow -$1 swaync
+	execute_d stow -$1 tmux
+	execute_d stow -$1 waypaper
+	execute_d stow -$1 keyd
+	execute_d stow -$1 fastfetch
+	execute_d stow -$1 bash
+	execute_d stow -$1 nvim
 }
 
 stowing D
