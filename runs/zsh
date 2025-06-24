@@ -3,10 +3,10 @@
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/../util
 
-sudo pacman -S --noconfirm zsh
+execute_d "sudo pacman -S --noconfirm zsh"
 if [ "$(basename $(echo $SHELL))" = "zsh" ]; then
 	log "User shell is alreay set to Zsh"
 else
-	execute chsh -s /usr/bin/zsh
+	execute_d "chsh -s /usr/bin/zsh"
   log "use 'zsh' to enter Zsh"
 fi
