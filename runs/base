@@ -17,7 +17,11 @@ else
 		stow \
 		btop \
 		eza \
+		fzf \
+		fuse3 \
 		zoxide \
+		tokie \
+		vlc \
 		jq \
 		nodejs \
 		pnpm \

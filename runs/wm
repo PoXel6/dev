@@ -16,11 +16,13 @@ else
 		hypridle \
 		hyprlock \
 		hyprsunset \
+		kitty \
 		swaync \
 		nwg-look \
 		swww \
 		waybar \
 		waypaper \
 		swayosd-git \
-		rofi-wayland
+		rofi-wayland \
+		rofi-emoji
 fi
