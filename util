@@ -15,3 +15,13 @@ execute() {
 	fi
 	"$@"
 }
+
+prompt_to_install() {
+	input="USER INPUT"
+	read -p "[PROMPT]: $1? [Y/n]: " input
+	if [[ $input == [nN] ]]; then
+		return 1
+	else
+		return 0
+	fi
+}
