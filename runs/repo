@@ -9,9 +9,9 @@ clone_repo() {
 	else
 		log "$1 dir does not exist, creating..."
 		if [ -d $XDG_CONFIG_HOME/git ]; then
-			execute git clone pox:$1.git $HOME/$2/$1
+			execute_d git clone pox:$1.git $HOME/$2/$1
 		else
-			execute git clone git@github.com:PoXel6/$1.git $HOME/$2/$1
+			execute_d git clone git@github.com:PoXel6/$1.git $HOME/$2/$1
 		fi
 	fi
 }
@@ -22,12 +22,12 @@ ask_to_clone() {
 	if [ $retVal -eq 1 ]; then
 		log "Ok, trying next repo"
 	else
-		clone_repo $1 $2
+		execute_d "clone_repo $1 $2"
 	fi
 }
 
 if [ $# -ne 0 ]; then
-	clone_repo "$1"
+	execute_d "clone_repo $1"
 	exit 0
 fi
 
