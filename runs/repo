@@ -17,7 +17,7 @@ clone_repo() {
 }
 
 ask_to_clone() {
-	prompt_to_install "Do you want to clone $1 repo"
+	prompt_user "Do you want to clone $1 repo"
 	retVal=$?
 	if [ $retVal -eq 1 ]; then
 		log "Ok, trying next repo"
@@ -26,10 +26,10 @@ ask_to_clone() {
 	fi
 }
 
-while [ $# -ne 0 ]; do
-	clone_repo "$@"
-	shift
-done
+if [ $# -ne 0 ]; then
+	clone_repo "$1"
+	exit 0
+fi
 
 [ -d $HOME/Personal/ ] || mkdir -p $HOME/Personal/
 
