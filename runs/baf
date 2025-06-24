@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/../util
+
+programs[0]=intellij-idea-community-edition-bin
+programs[1]=zen-browser-bin
+programs[2]=calibre-bin
+programs[3]=obsidian
+programs[4]=prismlauncher
+programs[5]=jdk21-temurin
+
+ask() {
+	prompt_user "do you want to install - $1 - "
+	retVal=$?
+	if [ $retVal -eq 1 ]; then
+		unset programs[$2]
+		log "Ok, trying next program"
+	fi
+}
+
+for i in {0..5}; do
+	log "${programs[$i]}" "$i"
+	ask "${programs[$i]}" "$i"
+done
+
+execute_d yay -S --disable-download-timeout --noconfirm ${programs[@]}
