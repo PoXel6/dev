@@ -14,7 +14,7 @@ execute() {
 }
 
 execute_d() {
-	log "EXEC /W DRY_RUN: $@"
+	log "$@"
 	if [[ $DRY_RUN == "1" ]]; then
 		return
 	else
