@@ -4,17 +4,13 @@ script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/../util
 
 if [ ! -n "pacman -Qq | grep yay" ]; then
-	input="USER INPUT"
-	read -p "yay is not installed, should i install yay? [Y/n]: " input
-	if [[ $input == [nN] ]]; then
-		log "Ok, exiting..."
-		exit 0
-	fi
-	log "Installing yay..."
-	cd $script_dir/../
+	prompt_user "yay is not installed, should i install yay"
+	execute_d "cd $script_dir/../"
 	log pwd
-	./dev yay
+	execute_d "./dev yay"
 else
-	execute yay -S --noconfirm \
-		noto-fonts-emoji ttf-jetbrains-mono-nerd inter-font
+	execute_d yay -S --noconfirm \
+		noto-fonts-emoji \
+		ttf-jetbrains-mono-nerd \
+		inter-font
 fi
