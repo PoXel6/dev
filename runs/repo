@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/../util
+
+clone_repo() {
+	if [ -d $HOME/Personal/$1 ]; then
+		log "$1 exist trying next one..."
+	else
+		log "$1 dir does not exist, creating..."
+		if [ -d $XDG_CONFIG_HOME/git ]; then
+			execute git clone pox:$1.git $HOME/$2/$1
+		else
+			execute git clone git@github.com:PoXel6/$1.git $HOME/$2/$1
+		fi
+	fi
+}
+
+ask_to_clone() {
+	prompt_to_install "Do you want to clone $1 repo"
+	retVal=$?
+	if [ $retVal -eq 1 ]; then
+		log "Ok, trying next repo"
+	else
+		clone_repo $1 $2
+	fi
+}
+
+while [ $# -ne 0 ]; do
+	clone_repo "$@"
+	shift
+done
+
+[ -d $HOME/Personal/ ] || mkdir -p $HOME/Personal/
+
+clone_repo CodeezNutz Persoanl
+clone_repo dotConfig .
+ask_to_clone PunishPlugin Personal
+ask_to_clone Minion Personal
+ask_to_clone brain-rot-clicker Personal
+
+log "finished cloning repos"
