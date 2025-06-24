@@ -17,6 +17,7 @@ else
 		stow \
 		btop \
 		eza \
+		ncdu \
 		fzf \
 		fuse3 \
 		ntfs-3g \
