@@ -19,6 +19,7 @@ else
 		eza \
 		fzf \
 		fuse3 \
+		ntfs-3g \
 		zoxide \
 		tokie \
 		vlc \
