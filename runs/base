@@ -22,5 +22,6 @@ else
 		nodejs \
 		pnpm \
 		go \
-		rustup
+		rustup \
+		kdeconnect
 fi
