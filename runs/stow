@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+source $script_dir/../util
+
+execute cd $script_dir
+if [ ! -d $HOME/dotConfig/ ]; then
+	execute ./repo dotConfig
+fi
+log "dotConfig Already exist proceeding"
+
+execute cd $HOME/dotConfig/
+stowing() {
+	execute stow -$1 zsh
+	execute stow -$1 git
+	execute stow -$1 hypr
+	execute stow -$1 kitty
+	execute stow -$1 waybar
+	execute stow -$1 btop
+	execute stow -$1 gtk-2.0
+	execute stow -$1 gtk-3.0
+	execute stow -$1 rofi
+	execute stow -$1 scripts
+	execute stow -$1 starship
+	execute stow -$1 swappy
+	execute stow -$1 swaync
+	execute stow -$1 tmux
+	execute stow -$1 waypaper
+	execute stow -$1 keyd
+	execute stow -$1 fastfetch
+	execute stow -$1 bash
+	execute stow -$1 nvim
+
+}
+
+stowing D
+stowing S
