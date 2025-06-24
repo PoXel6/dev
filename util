@@ -16,7 +16,7 @@ execute() {
 	"$@"
 }
 
-prompt_to_install() {
+prompt_user() {
 	input="USER INPUT"
 	read -p "[PROMPT]: $1? [Y/n]: " input
 	if [[ $input == [nN] ]]; then
