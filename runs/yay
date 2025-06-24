@@ -3,9 +3,9 @@
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/../util
 
-execute sudo pacman -S --noconfirm --needed git base-devel
-execute git clone https://aur.archlinux.org/yay.git $HOME/yay/
-execute cd $HOME/yay/
-execute makepkg -si
-execute rm -rf $HOME/yay
-execute yay -Syu --noconfirm
+execute_d sudo pacman -S --noconfirm --needed git base-devel
+execute_d git clone https://aur.archlinux.org/yay.git $HOME/yay/
+execute_d cd $HOME/yay/
+execute_d makepkg -si
+execute_d rm -rf $HOME/yay
+execute_d yay -Syu --noconfirm
