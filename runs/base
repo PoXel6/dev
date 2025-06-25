@@ -26,6 +26,7 @@ else
 		jq \
 		nodejs \
 		pnpm \
+		ly \
 		go \
 		rustup \
 		kdeconnect
