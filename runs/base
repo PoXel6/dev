@@ -3,9 +3,7 @@
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 source $script_dir/../util
 if [ ! -n "pacman -Qq | grep yay" ]; then
-	prompt_user "yay is not installed, should i install yay"
-	execute_d "cd $script_dir/../"
-	execute_d "./dev yay"
+	depends_on yay
 else
 	log "yay is installed, proceeding..."
 	execute_d yay -S --noconfirm \

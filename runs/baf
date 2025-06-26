@@ -20,10 +20,7 @@ ask() {
 }
 
 if [ ! -n "pacman -Qq | grep yay" ]; then
-	prompt_user "yay is not installed, should i install yay"
-	execute_d "cd $script_dir/../"
-	log pwd
-	execute_d "./dev yay"
+	depends_on yay
 else
 	log "yay is installed, proceeding..."
 	for i in {0..5}; do
