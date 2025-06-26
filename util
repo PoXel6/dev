@@ -31,3 +31,30 @@ prompt_user() {
 		return 0
 	fi
 }
+
+depends_on_prog() {
+	if [ -e /usr/bin/$1 ]; then
+		log "$1 exits, proceeding"
+	else
+		input=$(prompt_user "$1 is not installed, should i install $1?")
+		res=$?
+		if [ $res -gt 0 ]; then
+			log "Ok, exiting with 0"
+			exit 0
+		else
+			yay -S $1
+		fi
+	fi
+}
+
+depends_on() {
+	input=$(prompt_user "this script depends on $1 to run before it, should i run $1?")
+	res=$?
+	if [ $res -gt 0 ]; then
+		log "exiting with 0"
+		exit 0
+	else
+		execute_d cd runs
+		execute_d "./$1"
+	fi
+}
