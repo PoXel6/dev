@@ -8,5 +8,6 @@ if [ "$(basename $(echo $SHELL))" = "zsh" ]; then
 	log "User shell is alreay set to Zsh"
 else
 	execute_d chsh -s /usr/bin/zsh
+  log "requires a restart to set the login shell, consider rebooting"
   log "use 'zsh' to enter Zsh"
 fi
