@@ -34,7 +34,7 @@ prompt_user() {
 
 depends_on_prog() {
 	if [ -e /usr/bin/$1 ]; then
-		log "$1 exits, proceeding"
+		log "$1 exists, proceeding"
 	else
 		input=$(prompt_user "$1 is not installed, should i install $1?")
 		res=$?
