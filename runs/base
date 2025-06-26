@@ -18,6 +18,7 @@ else
 		eza \
 		ncdu \
 		fzf \
+		nemo \
 		fuse3 \
 		ntfs-3g \
 		zoxide \
