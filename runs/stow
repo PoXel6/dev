@@ -6,32 +6,17 @@ source $script_dir/../util
 execute_d cd $script_dir
 if [ ! -d $HOME/dotConfig/ ]; then
 	execute_d ./repo dotConfig
-elif [ ls /usr/bin/ | grep -q "stow" ]; then
-	depends_on base
+else
+	log "dotConfig Already exist, proceeding"
 fi
-log "dotConfig Already exist proceeding"
+depends_on_prog stow
+depends_on_prog find
 
-execute_d cd $HOME/dotConfig/
 stowing() {
-	execute_d stow -$1 zsh
-	execute_d stow -$1 git
-	execute_d stow -$1 hypr
-	execute_d stow -$1 kitty
-	execute_d stow -$1 waybar
-	execute_d stow -$1 btop
-	execute_d stow -$1 gtk-2.0
-	execute_d stow -$1 gtk-3.0
-	execute_d stow -$1 rofi
-	execute_d stow -$1 scripts
-	execute_d stow -$1 starship
-	execute_d stow -$1 swappy
-	execute_d stow -$1 swaync
-	execute_d stow -$1 tmux
-	execute_d stow -$1 waypaper
-	execute_d stow -$1 keyd
-	execute_d stow -$1 fastfetch
-	execute_d stow -$1 bash
-	execute_d stow -$1 nvim
+	execute_d cd $HOME/dotConfig/
+	find $HOME/dotConfig -maxdepth 1 -mindepth 1 -type d -not -path "*\.*" |
+		sed "s|$HOME/dotConfig/||" |
+		xargs -I{} stow -v2 {}
 }
 
 stowing D
