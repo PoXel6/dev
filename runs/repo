@@ -27,7 +27,7 @@ ask_to_clone() {
 }
 
 if [ $# -ne 0 ]; then
-	execute_d "clone_repo $1"
+	execute_d clone_repo $1
 	exit 0
 fi
 

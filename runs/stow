@@ -6,8 +6,8 @@ source $script_dir/../util
 execute_d cd $script_dir
 if [ ! -d $HOME/dotConfig/ ]; then
 	execute_d ./repo dotConfig
-elif [ $(basename $(which stow)) != "stow" ]; then
-	execute_d ./base
+elif [ ls /usr/bin/ | grep -q "stow" ]; then
+	depends_on base
 fi
 log "dotConfig Already exist proceeding"
 
