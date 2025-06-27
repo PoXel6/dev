@@ -7,7 +7,7 @@ if [ ! -n "pacman -Qq | grep yay" ]; then
 else
 	log "yay is installed, proceeding..."
 	execute_d yay -S --noconfirm \
-		neovim \
+		neovim-nightly-bin \
 		fd \
 		ripgrep \
 		tmux \
