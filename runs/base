@@ -16,6 +16,8 @@ else
 		eza \
 		ncdu \
 		fzf \
+		grimblast-git \
+		swappy \
 		nemo \
 		fuse3 \
 		ntfs-3g \
