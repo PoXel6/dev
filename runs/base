@@ -18,6 +18,7 @@ else
 		fzf \
 		grimblast-git \
 		swappy \
+		pwvucontrol \
 		nemo \
 		fuse3 \
 		ntfs-3g \
