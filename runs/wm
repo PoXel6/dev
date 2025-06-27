@@ -16,7 +16,8 @@ else
 		hypridle \
 		hyprlock \
 		hyprsunset \
-		kitty \
+		hyprshade \ 
+	kitty \
 		swaync \
 		nwg-look \
 		swww \
