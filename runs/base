@@ -6,7 +6,7 @@ if [ ! -n "pacman -Qq | grep yay" ]; then
 	depends_on yay
 else
 	log "yay is installed, proceeding..."
-	execute_d yay -S --noconfirm \
+	execute_d yay -S \
 		neovim-nightly-bin \
 		fd \
 		ripgrep \
@@ -27,9 +27,12 @@ else
 		vlc \
 		jq \
 		nodejs \
+    npm \
 		pnpm \
 		ly \
 		go \
 		rustup \
-		kdeconnect
+		kdeconnect \
+    diff-so-fancy \
+		--noconfirm
 fi
